@@ -43,12 +43,12 @@ public class CategoryModel {
         this.description = description;
     }
 
-    public List<BoatModel> getBoat() {
+    public List<BoatModel> getBoats() {
         return boats;
     }
 
-    public void setBoat(List<BoatModel> boat) {
-        this.boats = boat;
+    public void setBoats(List<BoatModel> boats) {
+        this.boats = boats;
 
     }
 }

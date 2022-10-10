@@ -20,7 +20,7 @@ public class BoatModel {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("boat")
+    @JsonIgnoreProperties("boats")
     private CategoryModel category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "boat")
