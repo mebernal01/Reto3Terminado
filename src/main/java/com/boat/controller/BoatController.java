@@ -34,6 +34,19 @@ public class BoatController {
         return boatService.save(boatModel);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public BoatModel update(@RequestBody BoatModel boatModel){
+        return boatService.update(boatModel);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") Integer id){
+        return boatService.delete(id);
+    }
+
+
 }
 
 

@@ -49,5 +49,13 @@ public class CategoryService {
             }
         }
     }
+    public boolean delete(Integer id){
+        Boolean respuesta = getCategory(id).map(elemento ->{
+            categoryRepository.delete(elemento);
+            return true;
+        }).orElse(false);
+
+        return respuesta;
+    }
 }
 

@@ -1,5 +1,6 @@
 package com.boat.controller;
 
+import com.boat.model.BoatModel;
 import com.boat.model.CategoryModel;
 import com.boat.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,17 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryModel save(@RequestBody CategoryModel category){
         return categoryService.save(category);
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoryModel update(@RequestBody CategoryModel categoryModel){
+        return categoryService.update(categoryModel);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return categoryService.delete(id);
     }
 
 }

@@ -1,6 +1,5 @@
 package com.boat.service;
 
-import com.boat.model.AdminModel;
 import com.boat.model.BoatModel;
 import com.boat.repository.BoatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +38,11 @@ public class BoatService {
         if(boat.getId() != null){
             Optional<BoatModel>boatEncontrado = boatRepository.getBoatModel(boat.getId());
             if(!boatEncontrado.isEmpty()){
-                if(boat.getBrand() != null){
-                    boatEncontrado.get(). setBrand(boat.getBrand());
-                }
                 if(boat.getName() != null ){
                     boatEncontrado.get().setName(boat.getName());
+                }
+                if(boat.getBrand() != null){
+                    boatEncontrado.get(). setBrand(boat.getBrand());
                 }
                 if(boat.getYear() != null ){
                     boatEncontrado.get().setYear(boat.getYear());
@@ -51,11 +50,21 @@ public class BoatService {
                 if(boat.getDescription() != null ){
                     boatEncontrado.get().setDescription(boat.getDescription());
                 }
-                return boatRepository.save(boatEncontrado.get());
+                if(boat.getCategory()!= null){
+                    boatEncontrado.get().setCategory(boat.getCategory());
+                }
+
+                boatRepository.save(boatEncontrado.get());
+                return boatEncontrado.get();
+            }else {
+                return boat;
             }
+        }else {
+            return boat;
         }
-        return boat;
     }
+
+
     public boolean delete(Integer id){
         Boolean respuesta = getBoat(id).map(elemento ->{
             boatRepository.delete(elemento);
